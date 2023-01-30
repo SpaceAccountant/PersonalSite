@@ -1,85 +1,94 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+  <div id="main-container">
+    <header>
+      <div id="portrait">
+        <img src="https://pbs.twimg.com/media/ExQ6TijWgAAJPIx?format=png&name=4096x4096" alt="Dorothy Haze" />
+        <p><small>Image by <a href="https://twitter.com/_DJSaturn">DJSATURN</a></small></p>
+      </div>
+      <div id="description">
+        <h2>Welcome!</h2>
+        <p>Hihi! I'm Jade, your average trans girl programmer who likes *nix! I'm working on a number of projects, some public, some private.
+           Feel free to check out my interactive projects and eveything else I put on here! If you enjoy my work and want to support me then
+           you can <a href="https://www.buymeacoffee.com/JadeOnIce">buy me a coffee.</a></p>
+        <nav id="content-nav">
+          <ul>
+            <li><RouterLink to="/">Home</RouterLink></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <hr>
+    <div id="content">
+      <RouterView />
     </div>
-  </header>
-
-  <RouterView />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<style lang="scss">
+@import '@/assets/global.scss';
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+#main-container {
+  color: white;
+  font-family: "IBM VGA",monospace !important;
+  font-size: 20px;
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
+  h1, h2, h3, h4, h5, h6 {
+    color: $secondary_color;
+  }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+  a {
+    color: $tertiary_color;
+  }
 }
+</style>
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
+<style lang="scss" scoped>
+@import '@/assets/global.scss';
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
+#main-container {
+  background-color: rgba(black, 0.3);
+  border: 2px solid $tertiary_color;
+  box-shadow: 0 0 100px 50px rgba($tertiary_color, 0.2);
+  margin: 120px auto;
+  max-width: 1152px;
+  outline: 3px double $secondary_color;
+  padding: 30px;
 
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
   header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    column-gap: 30px;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    margin-bottom: 30px;
+  }
+}
+
+#portrait {
+  border: 2px solid black;
+  max-width: 256px;
+
+  img {
+    display: block;
+    width: 100%;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
+  p {
+    padding: 20px 10px;
+    text-align: center;
   }
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+#content-nav {
+  ul {
+    list-style-type: square;
   }
+}
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+#content {
+  padding: 20px 0;
 }
 </style>

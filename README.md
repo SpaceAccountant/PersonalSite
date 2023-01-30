@@ -1,6 +1,8 @@
-# jade-stocking-gay
+# General
 
-This template should help get you started developing with Vue 3 in Vite.
+## Overview
+
+This is the project for my [personal website](https://jade.stockings.gay/) written with Vue 3.
 
 ## Recommended IDE Setup
 
