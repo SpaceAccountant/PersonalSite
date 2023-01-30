@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, RouterView, useRouter } from 'vue-router';
+import { RouterLink, RouterView } from 'vue-router';
 </script>
 
 <template>
@@ -19,6 +19,7 @@ import { RouterLink, RouterView, useRouter } from 'vue-router';
         <nav id="content-nav">
           <ul>
             <li><RouterLink to="/">Home</RouterLink></li>
+            <li><RouterLink to="/contact">Contact</RouterLink></li>
           </ul>
         </nav>
       </div>
