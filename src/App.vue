@@ -9,11 +9,13 @@ import { RouterLink, RouterView } from 'vue-router'
         <img src="https://pbs.twimg.com/media/ExQ6TijWgAAJPIx?format=png&name=4096x4096" alt="Dorothy Haze" />
         <p><small>Image by <a href="https://twitter.com/_DJSaturn">DJSATURN</a></small></p>
       </div>
-      <div id="description">
-        <h2>Welcome!</h2>
-        <p>Hihi! I'm Jade, your average trans girl programmer who likes *nix! I'm working on a number of projects, some public, some private.
-           Feel free to check out my interactive projects and eveything else I put on here! If you enjoy my work and want to support me then
-           you can <a href="https://www.buymeacoffee.com/JadeOnIce">buy me a coffee.</a></p>
+      <div>
+        <div id="welcome">
+          <h2>Welcome!</h2>
+          <p>Hihi! I'm Jade, your average trans girl programmer who likes *nix! I'm working on a number of projects, some public, some private.
+             Feel free to check out my interactive projects and eveything else I put on here! If you enjoy my work and want to support me then
+            you can <a href="https://www.buymeacoffee.com/JadeOnIce">buy me a coffee.</a></p>
+        </div>
         <nav id="content-nav">
           <ul>
             <li><RouterLink to="/">Home</RouterLink></li>
@@ -64,27 +66,48 @@ import { RouterLink, RouterView } from 'vue-router'
     grid-template-columns: auto auto;
     justify-content: start;
     margin-bottom: 30px;
+
+    #portrait {
+      border: 2px solid black;
+      margin: 0 auto;
+      max-width: 256px;
+
+      img {
+        display: block;
+        width: 100%;
+      }
+
+      p {
+        padding: 20px 10px;
+        text-align: center;
+      }
+    }
+
+    #welcome {
+      text-align: center;
+    }
+
+    #content-nav {
+      font-size: 24px;
+      padding: 20px 0;
+      text-align: center;
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+    }
   }
-}
 
-#portrait {
-  border: 2px solid black;
-  max-width: 256px;
+  @media screen and (max-width: 800px) {
+    header {
+      display: block;
 
-  img {
-    display: block;
-    width: 100%;
-  }
-
-  p {
-    padding: 20px 10px;
-    text-align: center;
-  }
-}
-
-#content-nav {
-  ul {
-    list-style-type: square;
+      #portrait {
+        margin-bottom: 30px;
+      }
+    }
   }
 }
 
