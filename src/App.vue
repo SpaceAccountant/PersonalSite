@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterLink, RouterView, useRouter } from 'vue-router';
 </script>
 
 <template>
@@ -26,6 +26,7 @@ import { RouterLink, RouterView } from 'vue-router';
     </header>
     <hr>
     <div id="content">
+      <h1>{{useRouter().currentRoute.value.name}}</h1>
       <RouterView />
     </div>
   </div>
