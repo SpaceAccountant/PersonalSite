@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRouter } from 'vue-router';
 </script>
 
 <template>
@@ -44,6 +44,10 @@ import { RouterLink, RouterView } from 'vue-router'
 
   a {
     color: $tertiary_color;
+  }
+
+  a:hover, a:active {
+    color: mix($tertiary_color, white, 40%);
   }
 }
 </style>
