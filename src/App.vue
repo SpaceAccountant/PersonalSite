@@ -33,7 +33,7 @@ import { RouterLink, RouterView, useRouter } from 'vue-router';
 </template>
 
 <style lang="scss">
-@import '@/assets/global.scss';
+@import '@/assets/style/global.scss';
 
 #main-container {
   color: white;
@@ -55,7 +55,7 @@ import { RouterLink, RouterView, useRouter } from 'vue-router';
 </style>
 
 <style lang="scss" scoped>
-@import '@/assets/global.scss';
+@import '@/assets/style/global.scss';
 
 #main-container {
   background-color: rgba(black, 0.3);
