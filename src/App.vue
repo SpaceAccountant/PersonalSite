@@ -109,9 +109,10 @@ import { RouterLink, RouterView } from 'vue-router'
       }
     }
   }
-}
 
-#content {
-  padding: 20px 0;
+  #content {
+    padding: 20px 0;
+    text-align: center;
+  }
 }
 </style>
