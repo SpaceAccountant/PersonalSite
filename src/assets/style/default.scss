@@ -2,17 +2,11 @@ $primary_color:   #412c4c;
 $secondary_color: #b681b1;
 $tertiary_color:  #fbd3f7;
 
+$link_hover_color: mix($tertiary_color, white, 40%);
+
 @font-face {
     font-family: "IBM VGA";
     src: url("@/assets/fonts/Px437_IBM_VGA_8x16.ttf");
 }
 
-body {
-    background-color: $primary_color;
-    margin: 0 50px;
-}
-
-p, h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  padding: 0;
-}
+$font: "IBM VGA",monospace;
