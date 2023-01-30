@@ -3,7 +3,7 @@
   </ul>
 </template>
 
-<style>
+<style lang="scss" scoped>
 #projects-list {
   list-style-type: none;
   margin: 0;

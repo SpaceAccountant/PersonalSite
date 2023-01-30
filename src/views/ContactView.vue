@@ -5,7 +5,7 @@
   </ul>
 </template>
 
-<style>
+<style lang="scss" scoped>
 #contact-list {
   list-style-type: none;
   margin: 0;
