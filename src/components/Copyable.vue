@@ -1,12 +1,14 @@
 <script lang="ts" setup>
 import { defineProps } from 'vue';
 
-const props = defineProps<{
+interface Props {
   content: string
-}>();
+}
+
+const props = defineProps<Props>();
 
 function copy() {
-  navigator.clipboard.writeText( props.content );
+  navigator.clipboard.writeText(props.content);
 }
 </script>
 

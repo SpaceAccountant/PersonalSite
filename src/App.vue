@@ -17,11 +17,11 @@ const site_nav_links = [
   }
 ];
 
-const current_route_name = computed( () => useRouter().currentRoute.value.name );
+const current_route_name = computed(() => useRouter().currentRoute.value.name);
 </script>
 
 <template>
-  <div id="main-container">
+  <div id="mainContainer">
     <header class="container">
       <div id="portrait">
         <img src="https://pbs.twimg.com/media/ExQ6TijWgAAJPIx?format=png&name=4096x4096" alt="Dorothy Haze" />
@@ -34,6 +34,8 @@ const current_route_name = computed( () => useRouter().currentRoute.value.name )
              Feel free to check out my interactive projects and eveything else I put on here! If you enjoy my work and want to support me then
              you can <a href="https://www.buymeacoffee.com/JadeOnIce">buy me a coffee.</a></p>
         </div>
+        <br>
+        <h3>Maya &#60;3</h3>
         <nav id="content-nav">
           <ul v-for="link in site_nav_links">
             <li><RouterLink v-bind:to='link.path'>{{link.text}}</RouterLink></li>
@@ -42,7 +44,7 @@ const current_route_name = computed( () => useRouter().currentRoute.value.name )
       </div>
     </header>
     <hr>
-    <main id="main-content">
+    <main id="mainContent">
       <h1>{{current_route_name}}</h1>
       <RouterView />
     </main>
@@ -53,11 +55,11 @@ const current_route_name = computed( () => useRouter().currentRoute.value.name )
 @import '@/assets/style/default.scss';
 
 body {
-    background-color: $primary_color;
-    margin: 0 50px;
+  background-color: $primary_color;
+  margin: 0 50px;
 }
 
-#main-container {
+#mainContainer {
   color: white;
   font-family: $font;
   font-size: 20px;
@@ -87,7 +89,7 @@ body {
 @import '@/assets/style/default.scss';
 @import '@/assets/style/container.scss';
 
-#main-container {
+#mainContainer {
   background-color: rgba(black, 0.3);
   border: 2px solid $tertiary_color;
   box-shadow: 0 0 100px 50px rgba($tertiary_color, 0.2);
@@ -131,7 +133,7 @@ body {
     }
   }
 
-  #main-content {
+  #mainContent {
     margin-top: 30px;
     text-align: center;
   }
