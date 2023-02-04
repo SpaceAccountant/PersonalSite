@@ -32,7 +32,7 @@ const current_route_name = computed(() => useRouter().currentRoute.value.name);
               <Revealer contentId="projectsNav">Projects</Revealer>
               <nav id="projectsNav">
                 <ul>
-                  <li><a href="/projects/site">This Site</a></li>
+                  <li><RouterLink to="/projects/site">This Site</RouterLink></li>
                 </ul>
               </nav>
             </li>
