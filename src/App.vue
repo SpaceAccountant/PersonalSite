@@ -2,49 +2,46 @@
 import { computed } from 'vue';
 import { RouterLink, RouterView, useRouter } from 'vue-router';
 
-const site_nav_links = [
-  {
-    path: '/',
-    text: 'Home'
-  },
-  {
-    path: '/projects',
-    text: 'Projects'
-  },
-  {
-    path: '/contact',
-    text: 'Contact'
-  }
-];
+import Container from '@/components/Container.vue';
+import Revealer from './components/Revealer.vue';
 
 const current_route_name = computed(() => useRouter().currentRoute.value.name);
 </script>
 
 <template>
-  <div id="mainContainer">
-    <header class="container">
-      <div id="portrait">
+  <div id="mainSiteContainer">
+    <Container is="header">
+      <div class="portrait">
         <img src="https://pbs.twimg.com/media/ExQ6TijWgAAJPIx?format=png&name=4096x4096" alt="Dorothy Haze" />
         <p><small>Image by <a href="https://twitter.com/_DJSaturn">DJSATURN</a></small></p>
       </div>
-      <div id="description">
-        <div id="welcome">
+      <div class="description">
+        <div>
           <h2>Welcome!</h2>
           <p>Hihi! I'm Jade, your average trans girl programmer who likes *nix! I'm working on a number of projects, some public, some private.
-             Feel free to check out my interactive projects and eveything else I put on here! If you enjoy my work and want to support me then
-             you can <a href="https://www.buymeacoffee.com/JadeOnIce">buy me a coffee.</a></p>
+            Feel free to check out my interactive projects and eveything else I put on here! If you enjoy my work and want to support me then
+            you can <a href="https://www.buymeacoffee.com/JadeOnIce">buy me a coffee.</a></p>
         </div>
         <br>
         <h3>Maya &#60;3</h3>
-        <nav id="content-nav">
-          <ul v-for="link in site_nav_links">
-            <li><RouterLink v-bind:to='link.path'>{{link.text}}</RouterLink></li>
+        <nav id="siteContentNav">
+          <ul>
+            <li><RouterLink to="/">Home</RouterLink></li>
+            <li><RouterLink to="/contact">Contact</RouterLink></li>
+            <li>
+              <Revealer contentId="projectsNav">Projects</Revealer>
+              <nav id="projectsNav">
+                <ul>
+                  <li><a href="/projects/site">This Site</a></li>
+                </ul>
+              </nav>
+            </li>
           </ul>
         </nav>
       </div>
-    </header>
+    </Container>
     <hr>
-    <main id="mainContent">
+    <main id="mainSiteContent">
       <h1>{{current_route_name}}</h1>
       <RouterView />
     </main>
@@ -59,7 +56,7 @@ body {
   margin: 0 50px;
 }
 
-#mainContainer {
+#mainSiteContainer {
   color: white;
   font-family: $font;
   font-size: 20px;
@@ -82,26 +79,11 @@ body {
   a:hover, a:active {
     color: $link_hover_color;
   }
-}
-</style>
-
-<style lang="scss" scoped>
-@import '@/assets/style/default.scss';
-@import '@/assets/style/container.scss';
-
-#mainContainer {
-  background-color: rgba(black, 0.3);
-  border: 2px solid $tertiary_color;
-  box-shadow: 0 0 100px 50px rgba($tertiary_color, 0.2);
-  margin: 120px auto;
-  max-width: 1152px;
-  outline: 3px double $secondary_color;
-  padding: 30px;
 
   header {
     margin-bottom: 30px;
 
-    #portrait {
+    .portrait {
       border: 2px solid black;
       margin: 0 auto;
       max-width: 256px;
@@ -117,10 +99,10 @@ body {
       }
     }
 
-    #description {
+    .description {
       text-align: center;
 
-      #content-nav {
+      #siteContentNav {
         font-size: 24px;
         margin-top: 30px;
 
@@ -129,11 +111,35 @@ body {
           margin: 0;
           padding: 0;
         }
+
+        #projectsNav {
+          font-size: 16px;
+
+          ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+          }
+        }
       }
     }
   }
+}
+</style>
 
-  #mainContent {
+<style lang="scss" scoped>
+@import '@/assets/style/default.scss';
+
+#mainSiteContainer {
+  background-color: rgba(black, 0.3);
+  border: 2px solid $tertiary_color;
+  box-shadow: 0 0 100px 50px rgba($tertiary_color, 0.2);
+  margin: 120px auto;
+  max-width: 1152px;
+  outline: 3px double $secondary_color;
+  padding: 30px;
+
+  #mainSiteContent {
     margin-top: 30px;
     text-align: center;
   }
