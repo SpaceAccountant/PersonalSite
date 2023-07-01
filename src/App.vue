@@ -12,15 +12,15 @@ const current_route_name = computed(() => useRouter().currentRoute.value.name);
   <div id="mainSiteContainer">
     <Container is="header">
       <div class="portrait">
-        <img src="https://pbs.twimg.com/media/ExQ6TijWgAAJPIx?format=png&name=4096x4096" alt="Dorothy Haze" />
-        <p><small>Image by <a href="https://twitter.com/_DJSaturn">DJSATURN</a></small></p>
+        <img src="https://pbs.twimg.com/media/FsWAMTqXsAE8zQM?format=png&name=large" alt="Photo of me." />
+        <p><small>Me!</small></p>
       </div>
       <div class="description">
         <div>
           <h2>Welcome!</h2>
           <p>Hihi! I'm Jade, your average trans girl programmer who likes *nix! I'm working on a number of projects, some public, some private.
             Feel free to check out my interactive projects and eveything else I put on here! If you enjoy my work and want to support me then
-            you can <a href="https://www.buymeacoffee.com/JadeOnIce">buy me a coffee.</a></p>
+            you can donate via <a href="https://cash.app/$jadeonice">Cash App</a></p>
         </div>
         <br>
         <h3>Maya &#60;3</h3>
