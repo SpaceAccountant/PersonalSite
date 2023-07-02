@@ -3,7 +3,6 @@ import { computed } from 'vue';
 import { RouterLink, RouterView, useRouter } from 'vue-router';
 
 import Container from '@/components/Container.vue';
-import Revealer from './components/Revealer.vue';
 
 const current_route_name = computed(() => useRouter().currentRoute.value.name);
 </script>
@@ -29,7 +28,7 @@ const current_route_name = computed(() => useRouter().currentRoute.value.name);
             <li><RouterLink to="/">Home</RouterLink></li>
             <li><RouterLink to="/contact">Contact</RouterLink></li>
             <li>
-              <Revealer contentId="projectsNav">Projects</Revealer>
+              <Revealer target="projectsNav">Projects</Revealer>
               <nav id="projectsNav">
                 <ul>
                   <li><RouterLink to="/projects/site">This Site</RouterLink></li>

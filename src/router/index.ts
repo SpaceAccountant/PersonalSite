@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import ContactView from '@/views/ContactView.vue'
 import HomeView from '@/views/HomeView.vue'
 import SiteProjectView from '@/views/SiteProjectView.vue'
@@ -22,6 +23,6 @@ const router = createRouter({
       component: SiteProjectView
     }
   ]
-})
+});
 
-export default router
+export default router;

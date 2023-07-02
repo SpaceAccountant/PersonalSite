@@ -1,31 +1,28 @@
 <script lang="ts" setup>
-import { nextTick, ref, withDefaults } from 'vue';
+import { nextTick, onMounted, withDefaults } from 'vue';
 
 interface Props {
-  contentId: string,
-  enabled?: boolean
+  // If the target is enabled initially
+  enabled?: boolean,
+  // The ID of the target element
+  target: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
   enabled: false
 });
 
-const display = ref('');
-const enabled = ref(props.enabled);
-
-nextTick(() => {
-  const element = document.getElementById(props.contentId);
-  if (element != null) {
-    display.value = element.style.display;
-    if (!enabled.value) {
-      element.style.display = 'none';
-    }
-  }
+onMounted(() => {
+  nextTick(() => {
+    document.getElementById(props.target)!.hidden = !props.enabled;
+  });
 });
 
 function toggle() {
-  enabled.value = !enabled.value;
-  document.getElementById(props.contentId)!.style.display = enabled.value ? display.value : 'none';
+  const element = document.getElementById(props.target);
+  if ( element ) {
+    element.hidden = !element.hidden;
+  }
 }
 </script>
 

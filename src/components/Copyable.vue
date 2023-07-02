@@ -2,13 +2,13 @@
 import { defineProps } from 'vue';
 
 interface Props {
-  content: string
+  value: string
 }
 
 const props = defineProps<Props>();
 
 function copy() {
-  navigator.clipboard.writeText(props.content);
+  navigator.clipboard.writeText(props.value);
 }
 </script>
 
