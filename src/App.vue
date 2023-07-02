@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { RouterLink, RouterView, useRouter } from 'vue-router';
-
-import Container from '@/components/Container.vue';
-
 const current_route_name = computed(() => useRouter().currentRoute.value.name);
 </script>
 

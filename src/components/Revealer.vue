@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { nextTick, onMounted, withDefaults } from 'vue';
+import { defineProps, nextTick, onMounted, withDefaults } from 'vue';
 
 interface Props {
   // If the target is enabled initially
