@@ -20,7 +20,7 @@ onMounted(() => {
 
 function toggle() {
   const element = document.getElementById(props.target);
-  if ( element ) {
+  if (element) {
     element.hidden = !element.hidden;
   }
 }

@@ -1,41 +1,54 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, readonly } from 'vue';
 import { RouterLink, RouterView, useRouter } from 'vue-router';
+
 const current_route_name = computed(() => useRouter().currentRoute.value.name);
+
+class Project {
+  public constructor( public route: string, public description: string ) {}
+}
+
+const projects = readonly( [
+  new Project( '/projects/site', 'This site' )
+] );
 </script>
 
 <template>
   <div id="mainSiteContainer">
-    <Container is="header">
-      <div class="portrait">
-        <img src="https://pbs.twimg.com/media/FsWAMTqXsAE8zQM?format=png&name=large" alt="Photo of me." />
-        <p><small>Me!</small></p>
-      </div>
-      <div class="description">
-        <div>
-          <h2>Welcome!</h2>
-          <p>Hihi! I'm Jade, your average trans girl programmer who likes *nix! I'm working on a number of projects, some public, some private.
-            Feel free to check out my interactive projects and eveything else I put on here! If you enjoy my work and want to support me then
-            you can donate via <a href="https://cash.app/$jadeonice">Cash App</a></p>
+    <header>
+      <Container>
+        <div class="portrait">
+          <img alt="Photo of me." src="https://pbs.twimg.com/profile_images/1670685499470786561/Pmap6PeJ_400x400.jpg" />
+          <p><small>Me!</small></p>
         </div>
-        <br>
-        <h3>Maya &#60;3</h3>
-        <nav id="siteContentNav">
-          <ul>
-            <li><RouterLink to="/">Home</RouterLink></li>
-            <li><RouterLink to="/contact">Contact</RouterLink></li>
-            <li>
-              <Revealer target="projectsNav">Projects</Revealer>
-              <nav id="projectsNav">
-                <ul>
-                  <li><RouterLink to="/projects/site">This Site</RouterLink></li>
-                </ul>
-              </nav>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </Container>
+        <div class="description">
+          <div>
+            <h2>Welcome!</h2>
+            <p>Hihi! I'm Jade, your average trans girl programmer who likes *nix! I'm working on a number of projects, some public, some private.
+              Feel free to check out my interactive projects and eveything else I put on here! If you enjoy my work and want to support me then
+              you can donate via <a href="https://cash.app/$jadeonice">Cash App</a></p>
+          </div>
+          <br>
+          <h3>Maya &#60;3</h3>
+          <nav id="siteContentNav">
+            <ul>
+              <li><RouterLink to="/">Home</RouterLink></li>
+              <li><RouterLink to="/contact">Contact</RouterLink></li>
+              <li>
+                <Revealer target="projectsNav">Projects</Revealer>
+                <nav id="projectsNav">
+                  <ul>
+                    <li v-for="p in projects">
+                      <RouterLink v-bind:to="p.route">{{ p.description }}</RouterLink>
+                    </li>
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </Container>
+    </header>
     <hr>
     <main id="mainSiteContent">
       <h1>{{current_route_name}}</h1>
@@ -82,10 +95,11 @@ body {
     .portrait {
       border: 2px solid black;
       margin: 0 auto;
-      max-width: 256px;
 
       img {
         display: block;
+        max-width: 320px;
+        min-width: 250px;
         width: 100%;
       }
 
