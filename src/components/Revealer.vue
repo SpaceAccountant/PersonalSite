@@ -1,48 +1,54 @@
 <script lang="ts" setup>
-import { nextTick, ref, withDefaults } from 'vue';
+import { nextTick, ref } from 'vue';
 
 interface Props {
+  // The ID of the controlled element
   contentId: string,
-  enabled?: boolean
+  // The type of element that contains the revealer controller
+  is?: string,
+  // The initial revealed state of the controlled element
+  revealed?: boolean
 }
+const props: Props = withDefaults( defineProps<Props>(), {
+  is: 'span',
+  revealed: false
+} );
 
-const props = withDefaults(defineProps<Props>(), {
-  enabled: false
-});
-
-const display = ref('');
-const enabled = ref(props.enabled);
-
-nextTick(() => {
-  const element = document.getElementById(props.contentId);
-  if (element != null) {
-    display.value = element.style.display;
-    if (!enabled.value) {
-      element.style.display = 'none';
-    }
+// Set up the initial state of the revealer on the next DOM flush.
+nextTick( () => {
+  const element = document.getElementById( props.contentId );
+  if ( element ) {
+    element.hidden = !props.revealed;
   }
-});
+} );
 
+/**
+ * Toggles the reveal state of the controlled content.
+ * 
+ */
 function toggle() {
-  enabled.value = !enabled.value;
-  document.getElementById(props.contentId)!.style.display = enabled.value ? display.value : 'none';
+  const element = document.getElementById( props.contentId );
+  if ( element ) {
+    element.hidden = !element.hidden;
+  }
 }
 </script>
 
 <template>
-  <span class="revealer-controller" v-on:click="toggle()"><slot></slot></span>
+  <component class="revealer-controller" v-bind:is="props.is" v-on:click="toggle()">
+    <slot></slot>
+  </component>
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/style/default.scss';
-
 .revealer-controller {
-  color: $tertiary_color;
+  color: var( --tertiary-color );
   text-decoration: underline;
 }
 
 .revealer-controller:hover {
-  color: $link_hover_color;
+  color: var( --link-hover-color );
   cursor: pointer;
 }
 </style>
+

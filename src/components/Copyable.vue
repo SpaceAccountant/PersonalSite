@@ -1,31 +1,37 @@
 <script lang="ts" setup>
-import { defineProps } from 'vue';
-
 interface Props {
-  content: string
+  // The content that can be copied
+  content: string,
+  // The type of element that contains the copyable
+  is?: string
 }
+const props: Props = withDefaults( defineProps<Props>(), {
+  is: 'span'
+} );
 
-const props = defineProps<Props>();
-
+/**
+ * Copies the content to the clipboard.
+ * 
+ */
 function copy() {
-  navigator.clipboard.writeText(props.content);
+  navigator.clipboard.writeText( props.content );
 }
 </script>
 
 <template>
-  <span class="copyable" v-on:click="copy()"><slot></slot></span>
+  <component class="copyable" v-bind:is="props.is" v-on:click="copy()">
+    <slot></slot>
+  </component>
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/style/default.scss';
-
 .copyable {
-  color: $secondary_color;
+  color: var( --tertiary-color );
   text-decoration: underline;
 }
 
 .copyable:hover, .copyable:active {
-  color: $link_hover_color;
+  color: var( --link-hover-color );
   cursor: pointer;
 }
 </style>

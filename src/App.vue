@@ -5,25 +5,29 @@ import { RouterLink, RouterView, useRouter } from 'vue-router';
 import Container from '@/components/Container.vue';
 import Revealer from './components/Revealer.vue';
 
-const current_route_name = computed(() => useRouter().currentRoute.value.name);
+const currentRouteName = computed( () => useRouter().currentRoute.value.name );
 </script>
 
 <template>
   <div id="mainSiteContainer">
     <Container is="header">
       <div class="portrait">
-        <img src="https://pbs.twimg.com/media/FsWAMTqXsAE8zQM?format=png&name=large" alt="Photo of me." />
+        <img src="https://pbs.twimg.com/media/GD68FaxWwAA0wYe?format=jpg&name=large"
+             alt="Photo of me." />
         <p><small>Me!</small></p>
       </div>
       <div class="description">
         <div>
           <h2>Welcome!</h2>
-          <p>Hihi! I'm Jade, your average trans girl programmer who likes *nix! I'm working on a number of projects, some public, some private.
-            Feel free to check out my interactive projects and eveything else I put on here! If you enjoy my work and want to support me then
-            you can donate via <a href="https://cash.app/$jadeonice">Cash App</a></p>
+          <p>Hihi! I'm Jade, your average trans girl programmer who likes *nix! I'm
+             working on a number of projects, some public, some private. Feel free to
+             check out my interactive projects and eveything else I put on here! If you
+             enjoy my work and want to support me then you can donate via
+             <a href="https://cash.app/$jadeonice">Cash App</a></p>
         </div>
         <br>
         <h3>Maya &#60;3</h3>
+        <h3>Nyx &#60;3</h3>
         <nav id="siteContentNav">
           <ul>
             <li><RouterLink to="/">Home</RouterLink></li>
@@ -42,23 +46,21 @@ const current_route_name = computed(() => useRouter().currentRoute.value.name);
     </Container>
     <hr>
     <main id="mainSiteContent">
-      <h1>{{current_route_name}}</h1>
+      <h1>{{ currentRouteName }}</h1>
       <RouterView />
     </main>
   </div>
 </template>
 
 <style lang="scss">
-@import '@/assets/style/default.scss';
-
 body {
-  background-color: $primary_color;
+  background-color: var( --primary-color );
   margin: 0 50px;
 }
 
 #mainSiteContainer {
   color: white;
-  font-family: $font;
+  font-family: var( --font );
   font-size: 20px;
 
   p {
@@ -67,17 +69,17 @@ body {
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: $secondary_color;
+    color: var( --secondary-color );
     margin: 0;
     padding: 0;
   }
 
   a {
-    color: $tertiary_color;
+    color: var( --tertiary-color );
   }
 
   a:hover, a:active {
-    color: $link_hover_color;
+    color: var( --link-hover-color );
   }
 
   header {
@@ -128,15 +130,12 @@ body {
 </style>
 
 <style lang="scss" scoped>
-@import '@/assets/style/default.scss';
-
 #mainSiteContainer {
-  background-color: rgba(black, 0.3);
-  border: 2px solid $tertiary_color;
-  box-shadow: 0 0 100px 50px rgba($tertiary_color, 0.2);
-  margin: 120px auto;
+  background-color: rgba( black, 0.3 );
+  border: 2px solid var( --secondary-color );
+  box-shadow: 0 0 25px 12px var( --secondary-color );
+  margin: 50px auto;
   max-width: 1152px;
-  outline: 3px double $secondary_color;
   padding: 30px;
 
   #mainSiteContent {

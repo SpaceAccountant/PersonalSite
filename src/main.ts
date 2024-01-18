@@ -6,9 +6,11 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons'
 
+import '@/assets/style/default.scss';
+
 library.add( faCopy );
 
-const app = createApp(App);
-app.component('font-awesome-icon', FontAwesomeIcon);
-app.use(router);
-app.mount('#app');
+const app = createApp( App );
+app.component( 'font-awesome-icon', FontAwesomeIcon );
+app.use( router );
+app.mount( '#app' );

@@ -1,15 +1,17 @@
 <script lang="ts" setup>
 interface Props {
+  // The type of element that contains the container content
   is?: string
 }
-
-const props = withDefaults(defineProps<Props>(), {
+const props: Props = withDefaults( defineProps<Props>(), {
   is: 'div'
-});
+} );
 </script>
 
 <template>
-  <component v-bind:is="props.is" class="container"><slot></slot></component>
+  <component v-bind:is="props.is" class="container">
+    <slot></slot>
+  </component>
 </template>
 
 <style lang="scss" scoped>
@@ -21,7 +23,7 @@ const props = withDefaults(defineProps<Props>(), {
   gap: 30px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and ( max-width: 800px ) {
   .container {
     flex-direction: column;
   }
